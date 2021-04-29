@@ -4,7 +4,7 @@ import City from './city.jsx';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { setCities } from '../actions/index.js';
+import { setCities } from '../actions';
 // [...]
 
 // eslint-disable-next-line react/prefer-stateless-function
@@ -25,22 +25,21 @@ class CityList extends Component {
       </div>
     );
   }
-
-  
-  function mapDispatchToProps(dispatch) {
-    return bindActionCreators(
-      { setCities: setCities },
-      dispatch
-      );
-    }
-
-    function mapStateToProps(state) {
-      return {
-      cities: state.cities
-      };
-     }
-
 }
 
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(
+    { setCities: setCities },
+    dispatch
+  );
+}
+
+function mapStateToProps(state) {
+  return {
+    cities: state.cities
+  };
+}
+
+// export default CityList;
 export default connect(mapStateToProps, mapDispatchToProps)(CityList);
 
